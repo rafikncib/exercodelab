@@ -1,0 +1,19 @@
+
+#buttonGame{
+    margin: 20px auto;
+    text-align: center;
+}
+
+#buttonGame input{
+    width: 80px;
+    font-size: 16px;
+    color: white;
+}
+
+.tiles{
+    height: 200px;
+    width: 18%;
+    background-color: green;
+    margin: 2px;
+    display: inline-block;
+}
