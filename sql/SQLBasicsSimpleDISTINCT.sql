@@ -1,0 +1,4 @@
+-- Create your SELECT statement here
+
+select distinct(age)
+from people
