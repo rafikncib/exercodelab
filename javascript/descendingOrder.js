@@ -3,7 +3,7 @@ function descendingOrder(n){
   str = n.toString();
   
   // create an array of string characters 
-  // sort ASC then reverse them
+  // sort DEC then reverse them
   array = str.split('').sort().reverse();
   
   // create a string from the array
