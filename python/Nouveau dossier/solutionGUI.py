@@ -24,7 +24,4 @@ label.pack(expand=True)
 
 
 
-
-
-
 window.mainloop()
