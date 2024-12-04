@@ -11,6 +11,7 @@ from tkinter import *
 window = Tk()
 window.geometry("400x400")
 
+window.title("Dice Rolling")
 import random
 
 dice =["""
@@ -51,28 +52,34 @@ dice =["""
 [-----------]"""]
 
 
-label = Label(window,text="press Y if you want to roll the dice");
-label.pack()
+label = Label(window,text="Press Y if you want to roll the dice");
+label.pack(pady=10)
 
 def rollFunction():
     if(pressVariable.get().lower()=='y'):
         face = random.randint(1,6)
         label2.config(text=dice[face-1])
+        label.config(text="Press Y if you want to roll the dice again")
+        pressVariable.set("")
+    else:
+        label2.config(text="Enter 'Y' to roll the dice!")
+        pressVariable.set("")
         
     
 pressVariable = StringVar()
 entry = Entry(window,textvariable=pressVariable)
-entry.pack()
+entry.pack(pady=5)
+
 button = Button(window,text="Roll",command=rollFunction)
-button.pack()
+button.pack(pady=5)
 
     
 
 
 
 
-label2 = Label(window)
-label2.pack()
+label2 = Label(window,text="", font=("Courier", 16), justify="center")
+label2.pack(pady=20)
 
 
 
