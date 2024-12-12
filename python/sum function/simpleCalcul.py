@@ -2,105 +2,82 @@
 """
 Created on Tue Dec 10 20:01:46 2024
 
-@author: admin
+@author: Rafik Ncib
 """
 
 import tkinter
 from tkinter import *
 
-btnWidth = 5
-btnHeight = 5
-btnBG = 'black'
-btnFG = 'white'
+btnWidth = 7
+btnHeight = 7
+btnBG = 'white'
+btnFG = 'black'
 
-def display0():
-    newFormule = formule.get()
-    formule.set(newFormule+"0")
-
-
-def display1():
-    newFormule = formule.get()
-    formule.set(newFormule+"1")
-
-def display2():
-    newFormule = formule.get()
-    formule.set(newFormule+"2")
+buttonList =[
+    {"textValue":"9","row":3,"column":2},
+    {"textValue":"8","row":3,"column":1},
+    {"textValue":"7","row":3,"column":0},
     
-def display3():
+    {"textValue":"6","row":4,"column":2},
+    {"textValue":"5","row":4,"column":1},
+    {"textValue":"4","row":4,"column":0},
+    
+    {"textValue":"+","row":5,"column":3},
+    {"textValue":"3","row":5,"column":2},
+    {"textValue":"2","row":5,"column":1},
+    {"textValue":"1","row":5,"column":0},
+    
+    {"textValue":"=","row":6,"column":3},
+    {"textValue":",","row":6,"column":2},
+    {"textValue":"0","row":6,"column":1},
+    {"textValue":"+/-","row":6,"column":0},
+    
+    
+    
+]
+def display(t):
     newFormule = formule.get()
-    formule.set(newFormule+"3")    
-
-def display4():
-    newFormule = formule.get()
-    formule.set(newFormule+"4")
-
-
-def display5():
-    newFormule = formule.get()
-    formule.set(newFormule+"5")
-
-def display6():
-    newFormule = formule.get()
-    formule.set(newFormule+"6")
-
-
-def display7():
-    newFormule = formule.get()
-    formule.set(newFormule+"7")
-
-def display8():
-    newFormule = formule.get()
-    formule.set(newFormule+"8")
-
-def display9():
-    newFormule = formule.get()
-    formule.set(newFormule+"9")
-
-def displayAdd():
-    newFormule = formule.get()
-    formule.set(newFormule+"+")
+    if(newFormule!="0"):
+        formule.set(newFormule+t)
+    else:
+        formule.set(t)
 
 def result():
     newFormule = formule.get()
-    formule.set(newFormule+"1")
+    
+    try:
+        res = eval(newFormule)
+        formule.set(res)
+    except Exception:
+        print("Errrrrrreeeeeur")
+    
 window = Tk()
 window.title("sum of integers")
-window.geometry("500x500")
 
-#header message
-labelMessage = Label(window,text="Sum of integers")
-labelMessage.grid(row=0,column=6)
-
-formule = StringVar()
-enter = Entry(window,textvariable=formule)
-enter.grid(row=1,column=6)
-button0 = Button(window,text="0",bg=btnBG,fg=btnFG,width=btnWidth,height=btnHeight,command=display0)
-button0.grid(row=2,column=0)
-button1 = Button(window,text="1",bg=btnBG,fg=btnFG,width=btnWidth,height=btnHeight,command=display1)
-button1.grid(row=2,column=1)
-button2 = Button(window,text="2",bg=btnBG,fg=btnFG,width=btnWidth,height=btnHeight,command=display2)
-button2.grid(row=2,column=2)
-
-button3 = Button(window,text="3",bg=btnBG,fg=btnFG,width=btnWidth,height=btnHeight,command=display3)
-button3.grid(row=3,column=0)
-button4 = Button(window,text="4",bg=btnBG,fg=btnFG,width=btnWidth,height=btnHeight,command=display4)
-button4.grid(row=3,column=1)
-button5 = Button(window,text="5",bg=btnBG,fg=btnFG,width=btnWidth,height=btnHeight,command=display5)
-button5.grid(row=3,column=2)
-
-button6 = Button(window,text="6",bg=btnBG,fg=btnFG,width=btnWidth,height=btnHeight,command=display6)
-button6.grid(row=4,column=0)
-button7 = Button(window,text="7",bg=btnBG,fg=btnFG,width=btnWidth,height=btnHeight,command=display7)
-button7.grid(row=4,column=1)
-button8 = Button(window,text="8",bg=btnBG,fg=btnFG,width=btnWidth,height=btnHeight,command=display8)
-button8.grid(row=4,column=2)
-
-button9 = Button(window,text="9",bg=btnBG,fg=btnFG,width=btnWidth,height=btnHeight,command=display9)
-button9.grid(row=5,column=0)
-buttonAdd = Button(window,text="+",bg=btnBG,fg=btnFG,width=btnWidth,height=btnHeight,command=displayAdd)
-buttonAdd.grid(row=5,column=1)
-buttonEqual = Button(window,text="=",bg=btnBG,fg=btnFG,width=btnWidth,height=btnHeight,command=result)
-buttonEqual.grid(row=5,column=2)
+# Configure rows and columns to resize dynamically
+window.grid_rowconfigure(0, weight=1)
+for i in range(7):  # Adjust for the number of rows
+    window.grid_rowconfigure(i, weight=1)
+for i in range(4):  # Adjust for the number of columns
+    window.grid_columnconfigure(i, weight=1)
+    
+formule = StringVar(value="0")
+enter = Label(window,textvariable=formule,bg="lightgrey",
+    anchor="e",
+    font=("Arial", 20),
+    height=2  # Make it taller to display "0" properly
+    )
+enter.grid(row=0,column=0, columnspan=4, sticky="nsew")
+for btn in buttonList:
+    print(btn)
+    if(btn["textValue"]==","):
+        button = Button(window,text=btn['textValue'],bg=btnBG,fg=btnFG ,font=("Arial", 18),command=lambda t="." :display(t))
+    elif(btn["textValue"]=="="):
+        button = Button(window,text=btn['textValue'],bg=btnBG,fg=btnFG,font=("Arial", 18),command=result)
+    else:
+        button = Button(window,text=btn['textValue'],bg=btnBG,fg=btnFG,font=("Arial", 18),command=lambda t=btn['textValue'] :display(t))
+    button.grid(row=btn['row'],column=btn["column"], sticky="nsew")
+        
 
 window.mainloop()
 
