@@ -37,6 +37,8 @@ buttonList =[
 ]
 def display(t):
     newFormule = formule.get()
+    lengthFormule = len(newFormule)
+    print(newFormule,lengthFormule)
     if(newFormule!="0"):
         formule.set(newFormule+t)
     else:
