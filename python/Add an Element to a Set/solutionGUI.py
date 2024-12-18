@@ -10,7 +10,7 @@ from tkinter import *
 
 window = Tk()
 window.geometry("400x400")
-
+window.title('Add an Element to a set')
 subjects = {'mathematics', 'biology'}
 
 subjects.add("english")

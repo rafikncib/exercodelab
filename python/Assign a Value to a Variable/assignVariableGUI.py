@@ -10,12 +10,13 @@ from tkinter import *
 
 window = Tk()
 window.geometry("400x400")
+window.title("Assign a Variable")
 
 price = 199.99
  
 msgPrice = "This costs {}".format(price)
 label = Label(window,text=msgPrice);
-label.pack()
+label.pack(expand=True)
 
 
 
