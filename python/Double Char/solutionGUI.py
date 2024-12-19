@@ -34,7 +34,7 @@ header_label = Label(
 )
 header_label.grid(row=0, column=0, columnspan=2, sticky="nsew")
 
-# First String Input
+# your String Input
 label_string = Label(
     window, text="Your String:", font=("Arial", 12), bg="#f4f4f4"
 )
