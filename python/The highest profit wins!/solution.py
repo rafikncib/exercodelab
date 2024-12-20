@@ -12,3 +12,6 @@ def min_max(lst):
     
     # Return the smallest and largest numbers
     return [lst[0], lst[-1]]
+
+
+
