@@ -55,7 +55,7 @@ def result():
     
 window = Tk()
 window.title("sum of integers")
-
+window.geometry('400x400')
 # Configure rows and columns to resize dynamically
 window.grid_rowconfigure(0, weight=1)
 for i in range(7):  # Adjust for the number of rows
