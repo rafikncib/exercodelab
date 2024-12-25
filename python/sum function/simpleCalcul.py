@@ -22,7 +22,7 @@ buttonList =[
     {"textValue":"5","row":4,"column":1},
     {"textValue":"4","row":4,"column":0},
     
-    {"textValue":"+","row":5,"column":3},
+    {"textValue":"+","row":5,"column":3,"clicked":False},
     {"textValue":"3","row":5,"column":2},
     {"textValue":"2","row":5,"column":1},
     {"textValue":"1","row":5,"column":0},
@@ -40,9 +40,23 @@ def display(t):
     lengthFormule = len(newFormule)
     print(newFormule,lengthFormule)
     if(newFormule!="0"):
-        formule.set(newFormule+t)
+        if(t=="="):
+            result()
+            return 
+        if(newFormule[-1]=="+")and (t=="+"):
+            print(newFormule[-1])
+            formule.set(newFormule)
+        else:
+            formule.set(newFormule+t)
     else:
-        formule.set(t)
+        if(t=="+"):
+            formule.set("0"+t)
+        elif (t=="."):
+            formule.set("0"+t)
+        elif(t=="="):
+            formule.set("0")
+        else :
+            formule.set(t)
 
 def result():
     newFormule = formule.get()
@@ -75,7 +89,7 @@ for btn in buttonList:
     if(btn["textValue"]==","):
         button = Button(window,text=btn['textValue'],bg=btnBG,fg=btnFG ,font=("Arial", 18),command=lambda t="." :display(t))
     elif(btn["textValue"]=="="):
-        button = Button(window,text=btn['textValue'],bg=btnBG,fg=btnFG,font=("Arial", 18),command=result)
+        button = Button(window,text=btn['textValue'],bg=btnBG,fg=btnFG,font=("Arial", 18),command=lambda t="=" :display(t))
     else:
         button = Button(window,text=btn['textValue'],bg=btnBG,fg=btnFG,font=("Arial", 18),command=lambda t=btn['textValue'] :display(t))
     button.grid(row=btn['row'],column=btn["column"], sticky="nsew")
