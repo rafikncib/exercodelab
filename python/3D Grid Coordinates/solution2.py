@@ -1,0 +1,19 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jan  8 00:13:25 2025
+
+@author: Rafik Ncib
+"""
+
+
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+    
+    
+    new_list = [[i,j,k] for i in range(x+1) for j in range(y+1) for k in range(z+1) if i+j+k!=n]
+             
+    
+    print(new_list)

@@ -19,3 +19,9 @@ for char in string:
     result=new_result   
     
 print(result)
+
+
+from itertools import permutations
+
+for x in permutations(['a', 'b', 'c']):
+    print(''.join(x))
