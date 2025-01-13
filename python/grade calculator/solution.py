@@ -2,7 +2,7 @@
 """
 Created on Mon Jan 13 21:10:43 2025
 
-@author: admin
+@author: Rafik Ncib
 """
 
 # Create a simple grade calculator (e.g., A, B, C).
