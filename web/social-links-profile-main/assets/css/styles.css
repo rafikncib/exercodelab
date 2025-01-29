@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter';
+}
+#mainContent{
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    color: hsl(0, 0%, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
+}
+
+main{
+    
+    max-width: 320px;
+    min-height: 499px;
+    background-color: hsl(0, 0%, 12%);
+    text-align: center;
+    padding: 25px;
+    border-radius: 6px;
+
+}
+
+#profilePic img{
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    
+}
+
+h1{
+    font-size: 24px;
+}
+
+#profileInfo{
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+}
+#profileInfo p{
+    margin-top: 7px;
+    color: hsl(75, 94%, 57%);
+}
+
+#userJob{
+    padding: 10px 0px;
+}
+
+#socialLinks ul {
+    list-style: none;
+}
+.socialLink{
+    background-color: hsl(0, 0%, 20%);
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 6px;
+
+    font-size: 16px;
+}
+
+.socialLink:hover{
+    background-color: hsl(75, 94%, 57%);
+}
+.socialLink:hover a{
+    color: hsl(0, 0%, 20%);
+}
+a{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.socialLink:active {
+  background-color: #058c42;
+}
+
+.socialLink:active a{
+    color: white;
+  }
