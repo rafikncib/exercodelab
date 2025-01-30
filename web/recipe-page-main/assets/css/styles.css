@@ -1,0 +1,97 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#mainContent{
+    background-color: hsl(30, 54%, 90%);
+    min-height: 100vh;
+
+}
+
+main{
+    max-width: 780px;
+    background-color: white;
+    font-size: 16px;
+    color: hsl(30, 10%, 34%);
+}
+
+h1,h2{
+    font-family: "Young Serif",serif;
+}
+p,h3,li,td{
+    font-family: "Outfit",sans-serif;
+    
+}
+
+h1{
+    font-weight: bold;
+    color: black;
+}
+h2{
+    color: hsl(14, 45%, 36%);
+}
+
+#preperationContent{
+    background-color: hsl(330, 100%, 98%);
+    
+}
+
+#preperationContent h3{
+    color: hsl(332, 51%, 32%);
+    font-weight: 600;
+}
+
+#preperationContent li::marker {
+    
+    color: hsl(332, 51%, 32%);
+}
+
+
+li{
+    
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+span{
+    color: black;
+    font-weight: bold;
+}
+
+
+
+
+#ingredientsContent li::marker,#instructionsContent li::marker{
+    color: hsl(14, 45%, 36%);
+
+}
+
+
+tr{
+    color: hsl(30, 10%, 34%);
+}
+tr td:nth-child(2){
+    color: hsl(14, 45%, 36%);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    #mainContent{
+        padding: 0 !important;
+        min-width: 230px;
+    }
+    .container {
+      padding: 1rem !important;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+    }
+    h3{
+        font-size: 1.12rem;
+    }
+    
+  }
