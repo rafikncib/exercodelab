@@ -1,0 +1,131 @@
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+}
+body{
+    font-size: 100%;
+
+}
+#mainContent{
+    background-color: hsl(30, 38%, 92%);
+    padding: 16px;
+    min-height: 100vh;
+    font-family: "Montserrat", serif;
+    color: hsl(228, 12%, 48%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+main{
+    
+    max-width: 750px;
+    min-width: 375px;
+    margin: auto;
+}
+
+section{
+
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 0.5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#imageContent img{
+    width: 100%;
+    height: 100%;
+    border-radius:0.5em 0.5em 0 0 ;
+
+}
+
+article{
+    min-height: 390px;
+
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+article :nth-child(1){
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+}
+h2{
+    color: hsl(212, 21%, 14%);
+    font-weight: bolder;
+    font-size: 2.2em;
+    line-height: 1em;
+}
+
+h2,#newPrice{
+    font-family: "Fraunces", serif;
+
+}
+#productPrice{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#newPrice{
+    color: hsl(158, 36%, 37%);
+    margin-right: 16px;
+    font-weight: bolder;
+    font-size: 2.6em;
+    letter-spacing: 0em;
+}
+
+#oldPrice{
+    text-decoration: line-through;
+    
+}
+button{
+    background-color: hsl(158, 36%, 37%);
+    width: 100%;
+    padding: 10px;
+    color: hsl(0, 0%, 100%);
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: hsl(158, 36%, 20%);
+    cursor: pointer;
+  }
+
+  button:active{
+    background-color: hsl(212, 21%, 14%);
+
+  }
+button img{
+    margin-right: 8px;
+}
+
+@media screen and (min-width: 750px) {
+    section {
+      display: flex;
+      flex-direction: row;
+    }
+
+    article{
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 50px;
+    }
+
+    h2{
+        font-size: 2.6em;
+    }
+
+    #imageContent img{
+        border-radius:0.5em 0 0 0.5em ;
+        width: 375px;
+
+    }
+  }
