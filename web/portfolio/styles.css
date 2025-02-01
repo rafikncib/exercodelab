@@ -26,7 +26,7 @@ body{
 .wrap{
     max-width: 680px;
     margin: 0% auto;
-
+    border: 1px solid red;
 }
 a{
     color: white;
@@ -42,7 +42,6 @@ a{
 }
 nav{
     padding: 0px 20px ;
-
 }
 
 #main-content,#footer,#contacts{
@@ -103,7 +102,7 @@ nav{
     margin-bottom: 5px;
 }
 #welcome_section p{
-    font-size: 1.8em;
+    font-size: 2em;
     font-weight: 800;
 
 }
@@ -175,8 +174,13 @@ h1,p,h2{
 }
 
 #show-more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+    width: 200px;
     padding: 12px 30px;
-    border-radius:2px;
+    border-radius:5px;
     background-color: var(--body-color);
 }
 #show-more:hover{
