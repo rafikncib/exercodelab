@@ -9,23 +9,33 @@
     justify-content: center;
     align-items: center;
     min-height: 120vh;
-    padding: 50px;
-
+    padding: 90px 30px;
 }
 .grid-container{
-    display: grid;
-    width: 90%;
-    gap: 25px;
-    grid-template-columns: auto auto auto auto;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*display: grid;
+    gap: 20px;
+    grid-template-columns: auto auto auto auto;*/
+    
     color: hsl(0, 0%, 81%);
     font-size: 13px;
     font-family: "Barlow Semi Condensed", serif;
 }
 
 section{
-    padding: 2em;
+    min-height: 350px;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+    padding: 2.4em;
     border-radius: 0.7em;
     box-shadow: 0px 5px 16px  hsla(234, 12%, 34%,0.4);
+    overflow: hidden;
+
 }
 
 section:hover{
@@ -57,7 +67,7 @@ article{
 article p:nth-child(1){
     color: hsl(210, 46%, 95%);
     margin-bottom: 20px;
-    font-size: 1.8em;
+    font-size: 1.9em;
     line-height: 1.3;
 
 }
@@ -67,12 +77,13 @@ article p:nth-child(2){
 
 }
 .item1{
+    width: 100%;
     grid-column: 1/3;
     background-color: hsl(263, 55%, 52%);
     font-weight: bold;
     position: relative;
     z-index: 1;
-
+    overflow: hidden;
 }
 
 .item1 figure img{
@@ -86,6 +97,7 @@ article p:nth-child(2){
 }
 .item5{
     color: black;
+    margin-bottom: 0px;
 
     grid-area: 1/4/3/5;
     background-color: hsl(0, 0%, 100%);
@@ -112,31 +124,49 @@ article p:nth-child(2){
 }
 
 
-#quotation img{
+.item1 #quotation{
     position: absolute;
-    width: 150px;
-    height: 150px;
+    
+    width: 7.8em;
+    height: 7.8em;
     border-radius: 0%;
-    left: 65%;
+    right: 3%;
     top: 0px;
+    
+
     z-index: -1;
 
 }
-@media screen and (max-width:900px) {
-    #mainContent{
-        padding: 0px;
+@media screen and (min-width:900px) {
+    .grid-container{
+        display: grid;
+        gap: 20px;
+        grid-template-columns: auto auto auto auto;
+        align-items: normal;
+        width: 70%;
+
     }
+    
+    #mainContent{
+        min-height: 130vh;
+    }/*
     .grid-container{
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 80px;
+        background-color:  black;
     }
 
-
+    section{
+        width: 100%;
+    }
     #quotation img{
         max-width: 100px;
         max-height: 100px;
         border-radius: 0%;
         
     
-    }
+    }*/
 }
