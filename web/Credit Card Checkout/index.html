@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>
+            Credit Card Checkout
+        </title>
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <main>
+            <p><a href=""><i class="fas fa-arrow-left"></i></a><a href=""><i class="fas fa-question"></i></a></p>
+            <header>
+                <h1>You're almost done!</h1>
+                <p>Provide your credit card information to complete your purchase</p>
+            </header>
+
+            <section>
+                <form action="" method="post">
+                    <div id="image-choice">
+                        <label class="image-option">
+                            <input type="radio" name="payment" value="visa" checked>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
+                        </label>
+                        <label class="image-option">
+                            <input type="radio" name="payment" value="mastercard">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+                        </label>
+                        <label class="image-option">
+                            <input type="radio" name="payment" value="paypal">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                        </label>
+                    </div>
+                    <label for="">
+                        Card number <br>
+                        <input type="text" name="" id="" placeholder="1111 2222 3333 4444">
+                    </label>
+                    <br>
+                    <label for="">
+                        Cardholder's number <br>
+                        <input type="text" name="" id="" placeholder="Rafik Ncib">
+                    </label>
+
+                    <div id="group-input">
+                        <label for="">
+                            Expiry date <br>
+                            <input type="text" name="" id="" placeholder="MM / YY">
+                        </label>
+
+                        <label for="">
+                            CVV <br>
+                            <input type="number" name="" id="" placeholder="123" maxlength="3">
+                        </label>
+                    </div>
+
+                    <label for=""><input type="checkbox" name="" id="">Save information for future payments</label>
+                    
+                    <input type="submit" value="Checkout">
+                </form>
+            </section>
+        </main>
+
+        <script src="https://kit.fontawesome.com/6f2dc3a864.js" crossorigin="anonymous"></script>
+
+    </body>
+</html>
