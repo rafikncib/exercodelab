@@ -1,0 +1,77 @@
+*{
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                height: 100vh;
+                color: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: black;
+                
+            }   
+            #container{
+              width: 250px;  
+                background-color: #4050f7;
+                padding: 15px;
+            }
+
+            
+
+            section{
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                max-width: 200px;
+                margin: auto;
+            }
+            h2{
+                font-family: sans-serif;
+                font-weight: bolder;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 150px;
+                text-align: center;
+                border: 5px solid white;
+                border-radius: 26px;
+                font-size: 6.7em;
+                background-color: #f2f2f2;
+                box-shadow: 0px 10px 0px #e6e6e6 inset;
+            }
+
+            #button-group{
+                display: flex;
+                justify-content:space-around;
+            }
+
+            button{
+                font-weight: bolder;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 7px solid white;
+                box-shadow: 0px 3px 0px #ccdae8 inset;
+
+                font-size: 2.6em;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                color: #4050f7;
+            }
+
+            button:hover{
+                background-color: #ccdae8;
+                border-color: #ccdae8;
+                box-shadow: 0px 3px 0px #697f95 inset;
+                color: black;
+
+            }
+            button:active{
+                border-color: #495058;
+                box-shadow: 0px 3px 0px #687582 inset;
+                color: #687582;
+                background-color: #495058;
+            }
