@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        #mainContent{
+            background-color: white;
+            min-height: 100vh;
+            display: flex;
+            color: white;
+        }
+        main{
+            width: 500px;
+            margin: auto;
+            background-color: #222629;
+            box-shadow: 10px 10px 5px rgb(68, 54, 54);
+            border: 4px  solid none;
+        }
+
+        #result{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #323138;
+            padding: 10px;
+        }
+
+        #result .player{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        #result img{
+            width: 50px;
+            border-radius: 50%;
+        }
+        #result .span{
+            background-color: #434245;
+            padding: 5px;
+            border-radius: 25px;
+            width: 60px;
+            text-align: center;
+            font-weight: bold;
+        }
+        #counterContent{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+        #battleCntent{
+            display: none;
+            background-color: #323138;
+            padding: 25px;
+
+        }
+
+        #game-interface img{
+            width: 50px;
+        }
+
+        #game-interface{
+            
+            padding: 10px;
+            margin: 50px;
+            
+            position: relative;
+        }
+        #choiceContent{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 2rem;
+            padding: 20px;
+        }
+
+        #user-papers{
+            text-align: end;
+        }
+
+        .cartes{
+            padding: 15px 0px;
+        }
+        #start-button,#reset-button{
+            
+            margin-top: 20px;
+            width: 100%;
+            font-size: 20px;
+
+            background-color: #bced0c;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 3px 5px;
+            padding: 10px;
+        }
+
+        #start-button:hover{
+            background-color: #8fab2c;
+        }
+
+        #reset-button{
+            display: none;
+            width: 100%;
+            font-size: 20px;
+
+            background-color: #bced0c;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 3px 5px;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="mainContent">
+        <main>
+            <section id="result">
+                <div class="player">
+                    <img src="./playerone.jpg" alt=""> 
+                    <span id="btn-computer" class="span">Ready</span> 
+                </div>
+
+                <div id="counterContent">
+                    <h3>Countdown</h3>
+                    <p id="timer">10</p>
+                </div>
+
+                <div class="player">
+                    <span id="btn-player" class="span">Ready</span>  
+                    <img src="./playertwo.jpg" alt=""> 
+                </div>
+            </section>
+
+            <section  id="game-interface">
+                <section id="battleCntent">
+                    <section id="computer-papers" class="cartes">
+                        <img src="./rock.jfif" alt=""  id="rock" onclick="paperChoice('rock')" value="rock">
+                        <img src="./scissors.jpg" alt=""  onclick="paperChoice('scissors')">
+                        <img src="./paper.jpg" alt="" onclick="paperChoice('paper')">
+                    </section>
+                    <hr>
+                    <section id="choiceContent">
+                        <div id="computerCarte">
+                            <img src="./white.jpg" alt="" srcset="" id="computer-img">
+                        </div>
+                        <div id="resultContent">
+                            <h2 id="displayRsult"></h2>
+                        </div>
+                        <div id="computerChoice">
+                            <img src="./white.jpg" alt="" id="user-img">
+                        </div>
+                    </section>
+                    <hr>
+                    <section id="user-papers" class="cartes">
+                        <img src="./rock.jfif" alt=""  id="rock" onclick="play('rock')" value="rock">
+                        <img src="./scissors.jpg" alt=""  onclick="play('scissors')">
+                        <img src="./paper.jpg" alt="" onclick="play('paper')">
+                    </section>
+                </section>
+
+                <button id="start-button" onclick="startGame()">Start game</button>
+                <button id="reset-button" onclick="resetGame()">Reset game</button>
+            </section>
+        </main>
+    </div>
+
+
+    <script>
+        
+        const computerImg = document.getElementById('computer-img');
+        const userImg = document.getElementById('user-img');
+        const displayRsult = document.getElementById('displayRsult');
+        const startButton = document.getElementById('start-button');
+        const resetButton = document.getElementById('reset-button');
+        const btnComputer = document.getElementById('btn-computer');
+        const btnPlayer = document.getElementById('btn-player');
+        const gameInterface = document.getElementById('battleCntent');
+        const timer = document.getElementById('timer');
+        
+        const choices = ['rock','scissors','paper'];
+
+        let playerReady = computerReady = 0;
+        let userChoice = computerChoice = '';
+        let intervalId,countInterval;
+        let startCounter = 1;
+        let seconds ;
+        
+        function startGame(){
+            seconds =parseInt(timer.textContent);
+            startButton.style.display = 'none';
+            gameInterface.style.display = 'block';
+
+            // computer getting ready after 3 seconds
+            setTimeout(()=>{
+                if(!computerReady){
+                    computerChoice = computerPaperChoice();
+                    computerImg.src = 'brown.jpg';
+                    btnComputer.style.backgroundColor = '#f77f6f';
+                    computerReady = 1;
+                }
+            },3000);
+
+
+            intervalId = setInterval(()=>{
+                if((playerReady) && (computerReady)){
+                    startCounter = 0;
+                    // display choice carte
+                    setTimeout(()=>{
+                        console.log('user',userChoice);
+                        showChoice(userChoice,userImg);
+                        showChoice(computerChoice,computerImg)
+
+                    },1000);
+
+                    // display result after 1.5 seconds
+                    setTimeout(()=>{
+                        displayResul(userChoice,computerChoice);
+                    },1500);
+
+                    // display reset button
+                    setTimeout(()=>{
+                        resetButton.style.display = 'block';
+                    },3000);
+                    clearInterval(intervalId); // ✅ stop interval to avoid repeat
+
+            }
+        },100);
+        
+        // counter 
+        countInterval = setInterval(()=>{
+            console.log(startCounter);
+            if(startCounter)
+            {
+                seconds--;
+                if(seconds<0){
+                    setTimeout(()=>{
+                    displayRsult.textContent = 'Lose';
+                    resetButton.style.display = 'block';
+                    
+
+                },3000);
+                    clearInterval(countInterval);
+
+                }else
+                    timer.textContent = seconds;
+            }
+        },1000);
+            
+        }
+        
+
+        
+        
+        function play(choice){
+            if(playerReady) return;
+            if(seconds<0) return;
+            userChoice = choice;
+            btnPlayer.style.backgroundColor = '#f77f6f';
+            userImg.src = 'brown.jpg';
+
+            playerReady = 1;
+        }
+
+        function computerPaperChoice(){
+            // Returns a random integer from 1 to 3:
+            let computerChoiceNumber = Math.floor(Math.random() * 3);
+            computerChoice = choices[computerChoiceNumber];
+            
+            
+            return computerChoice;
+        }
+
+        
+
+
+        function displayResul(userChoice,computerChoice){
+            if(userChoice==='rock'){
+                    if(computerChoice=='rock'){
+                        displayRsult.textContent = 'Draw';
+                    }else if(computerChoice=='scissors'){
+                        displayRsult.textContent = 'Win';
+                    }else{
+                        displayRsult.textContent = 'Lose';
+                    }
+                }else if(userChoice==='scissors'){
+                    if(computerChoice=='rock'){
+                        displayRsult.textContent = 'Lose';
+                    }else if(computerChoice=='scissors'){
+                        displayRsult.textContent = 'Draw';
+                    }else{
+                        displayRsult.textContent = 'Win';
+                    }
+                }else if(userChoice==='paper'){
+                    if(computerChoice=='rock'){
+                        displayRsult.textContent = 'Win';
+                    }else if(computerChoice=='scissors'){
+                        displayRsult.textContent = 'Lose';
+                    }else{
+                        displayRsult.textContent = 'Draw';
+                    }
+                }
+        }
+
+        function resetGame(){
+            clearInterval(intervalId);
+            clearInterval(countInterval);
+
+            playerReady = computerReady = 0;
+            userChoice = computerChoice = '';
+
+            computerImg.src = './white.jpg';
+            userImg.src = './white.jpg';
+            displayRsult.textContent = '';
+            
+            btnComputer.style.backgroundColor = '#434245';
+            btnPlayer.style.backgroundColor = '#434245';
+            resetButton.style.display = 'none';
+            timer.textContent = 10;
+            startCounter = 1;
+            startGame();
+
+        }
+
+
+        function showChoice(userChoice,userImg){
+            if(userChoice == 'rock'){
+                userImg.src = './rock.jfif';
+            }else if(userChoice=='scissors'){
+                userImg.src = './scissors.jpg';
+            }else{
+                userImg.src = './paper.jpg';
+            }
+        }
+    </script>
+</body>
+</html>
