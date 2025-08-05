@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Click Game</title>
+    <link href="https://fonts.googleapis.com/css3?family=Fredoka&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0%;
+            padding: 0%;
+        }
+        #mainContent{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            min-height: 100vh;
+            background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+        }
+        main{
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            position: relative;
+            box-shadow: 7px 7px 12px 2px black;
+            max-width: 500px; 
+            height: 500px;    
+        }
+        header{
+            text-align: center;
+        }
+        h1{
+           font-family: 'Fredoka'; 
+           font-size: 2.5rem;
+           color: #ff4081;
+        }
+
+        
+
+        h2{
+            font-size: 1.7rem;
+            font-style: italic;
+        }
+
+        #game-interface{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+        #score-timer{
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.4rem;
+        }
+        #click-btn {
+        font-size: 1.4rem;
+        border-radius: 50%;
+        padding: 30px 40px;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        transition: transform 0.2s;
+        visibility: hidden;
+        
+        }
+
+.click-btn:hover {
+  transform: scale(1.1);
+  background: #45a049;
+}
+    #countdown{
+        font-size: 4rem;
+        visibility: hidden;
+        text-align: center;
+    }
+
+    #btn-group{
+        display: flex;
+        justify-content: space-between;
+        visibility: hidden;
+    }
+    #btn-group button,#start-btn{
+                font-size: 1.4rem;
+                padding: 5px 8px;
+                background: gray;
+                border: none;
+                color: white;
+                border-radius: 7px;
+
+    }
+    #start-btn{
+        background-color: #166e18;
+        padding: 10px 90px;
+        font-size: 1.8rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);   
+    }
+    #btn-group button:nth-child(2){
+        background: blue;
+        
+    }
+
+    #clickContent{
+        display: flex;
+        justify-content: center;
+    }
+
+    
+    
+    </style>    
+
+</head>
+<body>
+    <div id="mainContent">
+        <main>
+            <header>
+                <h1>
+                    Button Click Game
+                </h1>
+                <h2>How fast can you click?</h2>
+            </header>
+
+            <section id="game-interface">
+                
+                <button id="start-btn" onclick="startGame()">Play Game</button>
+                <div id="score-timer">
+                    <h3>Score: <span id="score">0</span></h3>
+                    <h3>Timer: <span id="timer">5</span>s</h3>
+                </div>
+                <div id="countdown">3</div>
+                <div id="clickContent">
+                    <button id="click-btn" disabled>Click Button</button>
+                </div>
+                
+
+                <div id="btn-group">
+                    <button onclick="reset()"> 🔄 Reset Button</button>
+                    <button onclick="playAgain()"> 🎮 Play Again</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+    <script>
+        const scoreTimer = document.getElementById('score-timer');
+        const btnClick = document.getElementById('click-btn');
+        const countDownObject = document.getElementById('countdown');
+        const scoreObject = document.getElementById('score');
+        const timer = document.getElementById('timer');
+        const startBtn = document.getElementById('start-btn');
+        const gameInterface = document.getElementById('game-interface');
+        const resetBtn = document.getElementById('btn-group');
+
+        let numberClick = 0;
+        let countdown= 3;
+        let timerCounter = 5;
+        let gameStart = false;
+
+        function startGame(){
+            startBtn.style.display = 'none';
+            countDownObject.style.visibility = 'visible';
+            btnClick.style.visibility ='visible';
+            
+            const countDownInterval = setInterval(()=>{
+                countDownObject.textContent = countdown;
+                
+                if(countdown===0){
+                    clearInterval(countDownInterval);
+                    
+                    countDownObject.textContent = 'Start';
+                    btnClick.disabled = false;
+                    btnClick.classList.add('click-btn');
+                    gameStart = true;
+                    setTimeout(()=>{
+                        startGameTimer();
+                    },1000);
+                }
+                countdown--;
+            },1000);
+
+            
+        }
+        
+        btnClick.addEventListener('click',()=>{
+            numberClick++;
+            scoreObject.textContent = numberClick;            
+        })
+
+        function playAgain(){
+            numberClick = 0;
+            countdown= 3;
+            timerCounter = 5;
+            gameStart = false; 
+            startBtn.style.display = 'none'; 
+            countDownObject.style.visibility ='visible';
+            countDownObject.textContent = countdown;
+            timer.textContent = timerCounter;
+            btnClick.disabled = false;
+            resetBtn.style.visibility = 'hidden';
+            scoreObject.textContent = numberClick;
+            btnClick.disabled = true;
+            btnClick.classList.remove('click-btn');
+
+            startGame();
+        }
+
+        function reset(){
+            numberClick = 0;
+            countdown = 3;
+            timerCounter = 5;
+            gameStart = false; 
+            startBtn.style.display = 'block'; 
+            countDownObject.style.visibility ='hidden';
+            countDownObject.textContent = countdown;
+            timer.textContent = timerCounter;
+            btnClick.disabled = false;
+            resetBtn.style.visibility = 'hidden';
+            scoreObject.textContent = numberClick;
+            btnClick.style.visibility ='hidden';
+            btnClick.disabled = true;
+            btnClick.classList.remove('click-btn');
+
+        }
+
+        function startGameTimer(){
+            const timerCounterInterval =  setInterval(()=>{
+                timer.textContent = timerCounter;
+                
+                    if(timerCounter === 0 ){
+                        clearInterval(timerCounterInterval);
+                        btnClick.disabled = true;
+                        resetBtn.style.visibility = 'visible';
+                        btnClick.classList.remove('click-btn');
+
+                    }
+                    timerCounter--;
+                
+                
+            },1000);
+        }
+    </script>
+</body>
+</html>
